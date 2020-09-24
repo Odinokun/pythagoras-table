@@ -16,15 +16,15 @@ namespace Pythagoras_Table
             {
                 if (firstLine == 0)
                 {
-                    Console.Write("  |");
+                    Console.Write("  |");//first td
                 }
                 else if (firstLine == 9)
                 {
-                    Console.Write(" " + firstLine + "\n");
+                    Console.Write(" " + firstLine + "\n");//last td
                 }
                 else
                 {
-                    Console.Write(" " + firstLine + " ");
+                    Console.Write(" " + firstLine + " ");//main td
                 }
 
                 firstLine++;
@@ -37,15 +37,15 @@ namespace Pythagoras_Table
             {
                 if (separator == 0)
                 {
-                    Console.Write("--+");
+                    Console.Write("--+");//first td
                 }
                 else if (separator == 9)
                 {
-                    Console.Write("---\n");
+                    Console.Write("---\n");//last td
                 }
                 else
                 {
-                    Console.Write("---");
+                    Console.Write("---");//main td
                 }
 
                 separator++;
@@ -53,12 +53,12 @@ namespace Pythagoras_Table
             //end separator line
 
             //begin vertical line
-            int vertical = 0;
+            int vertical = 1;
 
             while (vertical < 10)
             {
 
-                Console.Write(vertical + " |");
+                Console.Write(vertical + " |");//first td
 
                 int mult = 1;
 
@@ -66,10 +66,10 @@ namespace Pythagoras_Table
                 {
                     if (mult == 9)
                     {
-                        Console.Write(" " + mult * vertical + "\n");
+                        Console.Write(" " + mult * vertical + "\n");//last td
                     }
                     else
-                    {
+                    {   //main td
                         if (mult * vertical < 10)
                         {
                             Console.Write(" " + mult * vertical + " ");
@@ -87,7 +87,7 @@ namespace Pythagoras_Table
                 vertical++;
             }
 
-            Console.WriteLine("\n\n\n");
+            Console.WriteLine("\n\n");
         }
     }
 }
