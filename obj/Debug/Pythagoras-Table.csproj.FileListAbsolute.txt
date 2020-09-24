@@ -1,0 +1,7 @@
+D:\Dropbox\_currently_works\c#\Pythagoras-Table\bin\Debug\Pythagoras-Table.exe.config
+D:\Dropbox\_currently_works\c#\Pythagoras-Table\bin\Debug\Pythagoras-Table.exe
+D:\Dropbox\_currently_works\c#\Pythagoras-Table\bin\Debug\Pythagoras-Table.pdb
+D:\Dropbox\_currently_works\c#\Pythagoras-Table\obj\Debug\Pythagoras-Table.csprojAssemblyReference.cache
+D:\Dropbox\_currently_works\c#\Pythagoras-Table\obj\Debug\Pythagoras-Table.csproj.CoreCompileInputs.cache
+D:\Dropbox\_currently_works\c#\Pythagoras-Table\obj\Debug\Pythagoras-Table.exe
+D:\Dropbox\_currently_works\c#\Pythagoras-Table\obj\Debug\Pythagoras-Table.pdb
