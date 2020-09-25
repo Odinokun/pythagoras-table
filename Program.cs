@@ -25,11 +25,20 @@ namespace Pythagoras_Table
                 else if (firstLine == tableSize - 1)
                 {
                     Console.Write(" " + firstLine + "\n");//last td
+
                 }
                 else
                 {
-                    Console.Write(" " + firstLine + " ");//main td
+                    if (firstLine < 10)
+                    {
+                        Console.Write(" " + firstLine + " ");//main td
+                    }
+                    else
+                    {
+                        Console.Write(" " + firstLine);//main td
+                    }
                 }
+
 
                 firstLine++;
             }
