@@ -10,15 +10,19 @@ namespace Pythagoras_Table
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Введите целое число для задавания размера таблицы.");
+            int tableSize = int.Parse(Console.ReadLine()) + 1;
+            Console.WriteLine("\n\n");
+
             //begin first line
             int firstLine = 0;
-            while (firstLine < 10)
+            while (firstLine < tableSize)
             {
                 if (firstLine == 0)
                 {
                     Console.Write("  |");//first td
                 }
-                else if (firstLine == 9)
+                else if (firstLine == tableSize - 1)
                 {
                     Console.Write(" " + firstLine + "\n");//last td
                 }
@@ -33,13 +37,13 @@ namespace Pythagoras_Table
 
             //begin separator line
             int separator = 0;
-            while (separator < 10)
+            while (separator < tableSize)
             {
                 if (separator == 0)
                 {
                     Console.Write("--+");//first td
                 }
-                else if (separator == 9)
+                else if (separator == tableSize - 1)
                 {
                     Console.Write("---\n");//last td
                 }
@@ -55,16 +59,23 @@ namespace Pythagoras_Table
             //begin vertical line
             int vertical = 1;
 
-            while (vertical < 10)
+            while (vertical < tableSize)
             {
-
-                Console.Write(vertical + " |");//first td
+                //first td
+                if (vertical < 10)
+                {
+                    Console.Write(vertical + " |");
+                }
+                else
+                {
+                    Console.Write(vertical + "|");
+                }
 
                 int mult = 1;
 
-                while (mult < 10)
+                while (mult < tableSize)
                 {
-                    if (mult == 9)
+                    if (mult == tableSize - 1)
                     {
                         Console.Write(" " + mult * vertical + "\n");//last td
                     }
