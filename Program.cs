@@ -10,102 +10,119 @@ namespace Pythagoras_Table
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Введите целое число для задавания размера таблицы.");
-            int tableSize = int.Parse(Console.ReadLine()) + 1;
+            Console.WriteLine("Введите целое число - размер таблицы.");
+            int tableSize = int.Parse(Console.ReadLine()) + 1; //задаем размер таблицы
+            int tableSizeLength = Convert.ToString(tableSize).Length; //длина символа размера страницы
+            int maxValueLength = Convert.ToString(tableSize * tableSize).Length; //длина максимального значения таблицы
+
             Console.WriteLine("\n\n");
 
-            //begin first line
+            //begin верхняя строка таблицы
             int firstLine = 0;
             while (firstLine < tableSize)
             {
-                if (firstLine == 0)
+                if (firstLine == 0) //первая ячейка
                 {
-                    Console.Write("  |");//first td
-                }
-                else if (firstLine == tableSize - 1)
-                {
-                    Console.Write(" " + firstLine + "\n");//last td
+                    Console.Write(" ");
 
-                }
-                else
-                {
-                    if (firstLine < 10)
+                    int tdWidth = tableSizeLength - Convert.ToString(firstLine).Length; //разница в ширине
+
+                    while (tdWidth > 0) //корректируем ширину ячейки
                     {
-                        Console.Write(" " + firstLine + " ");//main td
+                        Console.Write(" ");
+                        tdWidth--;
                     }
-                    else
+
+                    Console.Write(" | ");
+                }
+                else //основные ячейки
+                {
+                    Console.Write(firstLine + " ");
+
+                    int tdWidth = maxValueLength - Convert.ToString(firstLine).Length; //разница в ширине
+
+                    while (tdWidth > 0) //корректируем ширину ячейки
                     {
-                        Console.Write(" " + firstLine);//main td
+                        Console.Write(" ");
+                        tdWidth--;
                     }
                 }
-
-
                 firstLine++;
             }
-            //end first line
+            Console.Write("\n");
+            //end верхняя строка таблицы
 
-            //begin separator line
+            //begin разделитель под верхней строкой в таблице
             int separator = 0;
             while (separator < tableSize)
             {
-                if (separator == 0)
+                if (separator == 0) //первая ячейка
                 {
-                    Console.Write("--+");//first td
+                    Console.Write("-");
+                    int tdWidth = tableSizeLength - Convert.ToString(separator).Length; //разница в ширине
+
+                    while (tdWidth > 0) //корректируем ширину ячейки
+                    {
+                        Console.Write("-");
+                        tdWidth--;
+                    }
+                    Console.Write("-+");
                 }
-                else if (separator == tableSize - 1)
+                else //основные ячейки
                 {
-                    Console.Write("---\n");//last td
-                }
-                else
-                {
-                    Console.Write("---");//main td
+                    Console.Write("-");
+
+                    int tdWidth = maxValueLength; //максимальная ширина ячейки
+
+                    while (tdWidth > 0) //корректируем ширину ячейки
+                    {
+                        Console.Write("-");
+                        tdWidth--;
+                    }
                 }
 
                 separator++;
             }
-            //end separator line
+            Console.Write("\n");
+            //end разделитель под верхней строкой в таблице
 
-            //begin vertical line
+            //begin основные строки
             int vertical = 1;
 
             while (vertical < tableSize)
             {
-                //first td
-                if (vertical < 10)
-                {
-                    Console.Write(vertical + " |");
-                }
-                else
-                {
-                    Console.Write(vertical + "|");
-                }
+                //первая ячейка
+                Console.Write(vertical);
+                int tdWidth = tableSizeLength - Convert.ToString(vertical).Length; //разница в ширине
 
-                int mult = 1;
+                while (tdWidth > 0) //корректируем ширину ячейки
+                {
+                    Console.Write(" ");
+                    tdWidth--;
+                }
+                Console.Write(" | ");
+
+                int mult = 1; //множитель
 
                 while (mult < tableSize)
                 {
-                    if (mult == tableSize - 1)
+
+                    Console.Write(mult * vertical + " "); //результат умножения
+                    int tdWidthMain = maxValueLength - Convert.ToString(mult * vertical).Length; //разница в ширине
+
+                    while (tdWidthMain > 0) //корректируем ширину ячейки
                     {
-                        Console.Write(" " + mult * vertical + "\n");//last td
-                    }
-                    else
-                    {   //main td
-                        if (mult * vertical < 10)
-                        {
-                            Console.Write(" " + mult * vertical + " ");
-
-                        }
-                        else
-                        {
-                            Console.Write(" " + mult * vertical);
-
-                        }
+                        Console.Write(" ");
+                        tdWidthMain--;
                     }
                     mult++;
                 }
 
                 vertical++;
+
+                Console.Write("\n");
             }
+            //end основные строки
 
             Console.WriteLine("\n\n");
         }
