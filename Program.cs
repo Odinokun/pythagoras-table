@@ -10,90 +10,89 @@ namespace Pythagoras_Table
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Введите целое число - размер таблицы.");
-            int tableSize = int.Parse(Console.ReadLine()) + 1; //задаем размер таблицы
-            int tableSizeLength = Convert.ToString(tableSize).Length; //длина символа размера страницы
-            int maxValueLength = Convert.ToString(tableSize * tableSize).Length; //длина максимального значения таблицы
+            Console.WriteLine("Введите первое число по горизонтали:");
+            int firstNumberHorisont = int.Parse(Console.ReadLine());
+            Console.WriteLine("Введите второе число по горизонтали:");
+            int secondNumberHorisont = int.Parse(Console.ReadLine());
+            Console.WriteLine("Введите первое число по вертикали:");
+            int firstNumberVert = int.Parse(Console.ReadLine());
+            Console.WriteLine("Введите второе число по вертикали:");
+            int secondNumberVert = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("\n\n");
+            int tableSizeVertLength = Convert.ToString(secondNumberVert).Length; //длина max вертикального символа размера страницы
+            int maxValueLength = Convert.ToString(secondNumberHorisont * secondNumberVert).Length; //длина максимального значения таблицы
 
-            //begin верхняя строка таблицы
-            int firstLine = 0;
-            while (firstLine < tableSize)
+            Console.WriteLine("");
+
+            //BEGIN верхняя строка таблицы
+
+            int firstTdWidth = tableSizeVertLength; //ширина первой ячейки
+            while (firstTdWidth > 0) //корректируем ширину ячейки
             {
-                if (firstLine == 0) //первая ячейка
+                Console.Write(" ");
+                firstTdWidth--;
+            }
+            Console.Write(" | ");
+
+            int firstLine = firstNumberHorisont;
+            while (firstLine <= secondNumberHorisont) //основные ячейки
+            {
+                Console.Write(firstLine + " ");
+
+                int tdWidth = maxValueLength - Convert.ToString(firstLine).Length; //разница в ширине
+
+                while (tdWidth > 0) //корректируем ширину ячейки
                 {
                     Console.Write(" ");
-
-                    int tdWidth = tableSizeLength - Convert.ToString(firstLine).Length; //разница в ширине
-
-                    while (tdWidth > 0) //корректируем ширину ячейки
-                    {
-                        Console.Write(" ");
-                        tdWidth--;
-                    }
-
-                    Console.Write(" | ");
-                }
-                else //основные ячейки
-                {
-                    Console.Write(firstLine + " ");
-
-                    int tdWidth = maxValueLength - Convert.ToString(firstLine).Length; //разница в ширине
-
-                    while (tdWidth > 0) //корректируем ширину ячейки
-                    {
-                        Console.Write(" ");
-                        tdWidth--;
-                    }
+                    tdWidth--;
                 }
                 firstLine++;
             }
             Console.Write("\n");
-            //end верхняя строка таблицы
+            //END верхняя строка таблицы
 
-            //begin разделитель под верхней строкой в таблице
-            int separator = 0;
-            while (separator < tableSize)
+
+            //BEGIN разделитель под верхней строкой в таблице
+
+            Console.Write("-"); //первая ячейка
+
+            firstTdWidth = tableSizeVertLength - 1; //разница в ширине
+
+            while (firstTdWidth > 0) //корректируем ширину ячейки
             {
-                if (separator == 0) //первая ячейка
+                Console.Write("-");
+                firstTdWidth--;
+            }
+            Console.Write("-+");
+
+            int separator = firstNumberHorisont;
+            while (separator <= secondNumberHorisont) //основные ячейки
+            {
+                Console.Write("-");
+
+                int tdWidth = maxValueLength; //максимальная ширина ячейки
+
+                while (tdWidth > 0) //корректируем ширину ячейки
                 {
                     Console.Write("-");
-                    int tdWidth = tableSizeLength - Convert.ToString(separator).Length; //разница в ширине
-
-                    while (tdWidth > 0) //корректируем ширину ячейки
-                    {
-                        Console.Write("-");
-                        tdWidth--;
-                    }
-                    Console.Write("-+");
-                }
-                else //основные ячейки
-                {
-                    Console.Write("-");
-
-                    int tdWidth = maxValueLength; //максимальная ширина ячейки
-
-                    while (tdWidth > 0) //корректируем ширину ячейки
-                    {
-                        Console.Write("-");
-                        tdWidth--;
-                    }
+                    tdWidth--;
                 }
 
                 separator++;
             }
             Console.Write("\n");
-            //end разделитель под верхней строкой в таблице
+            //END разделитель под верхней строкой в таблице
 
-            //begin основные строки
-            int vertical = 1;
 
-            while (vertical < tableSize)
+            //BEGIN основные строки
+
+            int vertical = firstNumberVert;
+
+            while (vertical <= secondNumberVert)
             {
                 //первая ячейка
                 Console.Write(vertical);
-                int tdWidth = tableSizeLength - Convert.ToString(vertical).Length; //разница в ширине
+                int tdWidth = tableSizeVertLength - Convert.ToString(vertical).Length; //разница в ширине
 
                 while (tdWidth > 0) //корректируем ширину ячейки
                 {
@@ -102,9 +101,9 @@ namespace Pythagoras_Table
                 }
                 Console.Write(" | ");
 
-                int mult = 1; //множитель
+                int mult = firstNumberHorisont; //множитель
 
-                while (mult < tableSize)
+                while (mult <= secondNumberHorisont) //основные ячейки
                 {
 
                     Console.Write(mult * vertical + " "); //результат умножения
@@ -122,7 +121,7 @@ namespace Pythagoras_Table
 
                 Console.Write("\n");
             }
-            //end основные строки
+            //END основные строки
 
             Console.WriteLine("\n\n");
         }
